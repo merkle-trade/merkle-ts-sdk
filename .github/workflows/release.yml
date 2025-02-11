@@ -45,11 +45,7 @@ jobs:
           git push --force --tags origin refs/remotes/public/main:refs/heads/main
 
           jq '.name = "@merkletrade/merkle-ts-sdk"
-            | .publishConfig.access = "public"
-            | .release.branches = [
-                "main",
-                { name: "develop", prerelease: "rc", channel: "latest" }
-              ]
+            | .repository = env.GITHUB_REPOSITORY
             ' package.json > _package.json
           mv _package.json package.json
 

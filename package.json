@@ -1,12 +1,9 @@
 {
-  "name": "ts-sdk",
+  "name": "@merkletrade/merkle-ts-sdk",
   "version": "0.0.0-semantic-release",
   "description": "TypeScript SDK for the Merkle Trade",
   "keywords": ["blockchain", "aptos", "merkle-trade", "merkle-trade-sdk"],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/merkle-trade/merkle-ts-sdk.git"
-  },
+  "repository": "merkle-trade/merkle-ts-sdk",
   "license": "MIT",
   "type": "module",
   "exports": {
