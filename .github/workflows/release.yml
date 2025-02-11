@@ -1,0 +1,63 @@
+name: Release
+
+on:
+  push:
+    branches: [main, alpha]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: ".nvmrc"
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9.12.0
+          run_install: false
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Check Lint
+        run: pnpm lint
+
+      - name: Build 📦
+        run: pnpm build
+
+      - name: Pre Release
+        if: github.repository_owner == 'merkle-dev'
+        run: |
+          git remote add public https://github.com/merkle-trade/merkle-ts-sdk
+          git fetch public main 'refs/tags/*:refs/tags/*'
+          git push --force --tags origin refs/remotes/public/main:refs/heads/main
+
+          jq '.name = "@merkletrade/merkle-ts-sdk"
+            | .publishConfig.access = "public"
+            | .release.branches = [
+                "main",
+                { name: "develop", prerelease: "rc", channel: "latest" }
+              ]
+            ' package.json > _package.json
+          mv _package.json package.json
+
+      - name: Release 🚀
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GIT_AUTHOR_NAME: merkle-dev
+          GIT_AUTHOR_EMAIL: merkletrade@protonmail.com
+        run: |
+          pnpm dlx semantic-release --ci

@@ -1,0 +1,75 @@
+{
+  "branches": [
+    "main",
+    {
+      "name": "alpha",
+      "prerelease": true
+    }
+  ],
+  "plugins": [
+    [
+      "@semantic-release/commit-analyzer",
+      {
+        "preset": "angular",
+        "releaseRules": [
+          {
+            "type": "breaking",
+            "release": "major"
+          },
+          {
+            "type": "feat",
+            "release": "minor"
+          },
+          {
+            "type": "fix",
+            "release": "patch"
+          },
+          {
+            "type": "alpha",
+            "release": "patch"
+          },
+          {
+            "type": "test",
+            "release": false
+          },
+          {
+            "scope": "no-release",
+            "release": false
+          }
+        ]
+      }
+    ],
+    [
+      "@semantic-release/release-notes-generator",
+      {
+        "preset": "angular",
+        "presetConfig": {
+          "types": [
+            {
+              "type": "breaking",
+              "section": "💥 Breaking Changes",
+              "hidden": false
+            },
+            {
+              "type": "feat",
+              "section": "✨ Features",
+              "hidden": false
+            },
+            {
+              "type": "fix",
+              "section": "🐛 Bug Fixes",
+              "hidden": false
+            },
+            {
+              "type": "alpha",
+              "section": "📦 Styles",
+              "hidden": false
+            }
+          ]
+        }
+      }
+    ],
+    "@semantic-release/github",
+    "@semantic-release/npm"
+  ]
+}
