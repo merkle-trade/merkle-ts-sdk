@@ -1,0 +1,44 @@
+{
+  "name": "ts-sdk",
+  "version": "0.0.0-semantic-release",
+  "description": "TypeScript SDK for the Merkle Trade",
+  "keywords": ["blockchain", "aptos", "merkle-trade", "merkle-trade-sdk"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/merkle-trade/merkle-ts-sdk.git"
+  },
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    "require": {
+      "types": "./dist/index.d.cts",
+      "default": "./dist/index.cjs"
+    },
+    "import": {
+      "types": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
+    }
+  },
+  "scripts": {
+    "build": "pkgroll --sourcemap  --minify ",
+    "build:watch": "pkgroll --watch",
+    "build:full": "pkgroll --clean-dist --sourcemap ",
+    "check-types": "tsc --noEmit",
+    "lint": "biome check",
+    "lint:write": "biome check --write && biome format --write"
+  },
+  "dependencies": {
+    "@aptos-labs/ts-sdk": "^1.33.1",
+    "ts-arithmetic": "^0.1.1",
+    "type-fest": "^4.32.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "pkgroll": "^2.6.1",
+    "semantic-release": "^24.2.1",
+    "typescript": "^5.7.3"
+  },
+  "packageManager": "pnpm@9.12.0",
+  "private": false,
+  "files": ["dist", "src"]
+}
