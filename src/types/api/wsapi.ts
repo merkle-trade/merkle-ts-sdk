@@ -4,19 +4,9 @@ import type {
   PositionEvent,
 } from "@/types/trading";
 
-export type PriceFeed = {
-  type: "sub";
-  key: string;
-  data: { pair: string; price: string; ts: number };
-};
+export type PriceFeed = { pair: string; price: string; ts: number };
 
-export type AccountFeed = {
-  type: "sub";
-  key: string;
-  data: AccountFeedData;
-};
-
-export type AccountFeedData = (
+export type AccountFeed = (
   | PositionEvent
   | CancelOrderEvent
   | PlaceOrderEvent
