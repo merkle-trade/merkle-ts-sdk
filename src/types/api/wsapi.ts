@@ -7,7 +7,7 @@ import type {
 export type PriceFeed = {
   type: "sub";
   key: string;
-  data: { pair: string; price: string; ts: string };
+  data: { pair: string; price: string; ts: number };
 };
 
 export type AccountFeed = {
