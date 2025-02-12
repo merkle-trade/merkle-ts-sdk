@@ -34,3 +34,4 @@ export namespace Collection {
 }
 
 export * from "./trading";
+export * from "./api";
