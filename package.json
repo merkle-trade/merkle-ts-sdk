@@ -1,5 +1,5 @@
 {
-  "name": "@merkletrade/merkle-ts-sdk",
+  "name": "@merkletrade/ts-sdk",
   "version": "0.0.0-semantic-release",
   "description": "TypeScript SDK for the Merkle Trade",
   "keywords": ["blockchain", "aptos", "merkle-trade", "merkle-trade-sdk"],
