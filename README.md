@@ -122,3 +122,7 @@ See [src/calc/*](src/calc/) for more details.
 ### Aptos Helper Methods
 
 - `getUsdcBalance`
+
+## Environment
+- [Mainnet](https://app.merkle.trade)
+- [Testnet](https://app.testnet.merkle.trade)
