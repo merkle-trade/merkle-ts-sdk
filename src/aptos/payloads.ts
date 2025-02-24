@@ -161,8 +161,8 @@ export function updateTPSL(args: {
     functionArguments: [
       args.userAddress,
       args.isLong,
-      args.stopLossTriggerPrice,
       args.takeProfitTriggerPrice,
+      args.stopLossTriggerPrice,
     ],
     abi: parseAbi({
       generic_type_params: [{ constraints: [] }, { constraints: [] }],
