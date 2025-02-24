@@ -156,7 +156,7 @@ export function updateTPSL(args: {
   const collateralType = usdcCollateralType(args.summary);
 
   return {
-    function: `${merkleContract}::managed_trading::update_tpsl_v3`,
+    function: `${merkleContract}::managed_trading::update_position_tp_sl_v3`,
     typeArguments: [pairType, collateralType],
     functionArguments: [
       args.userAddress,
